@@ -1,5 +1,7 @@
 package curtis.toaster;
 
+// Source: http://stackoverflow.com/questions/4750372/can-i-change-my-windows-desktop-wallpaper-programmatically-in-java-groovy
+
 import java.util.HashMap;
 
 import com.sun.jna.Native;
