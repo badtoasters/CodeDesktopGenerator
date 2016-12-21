@@ -7,11 +7,15 @@ import java.util.Random;
  * Created by Badtoasters on 12/20/2016.
  */
 public class NameGenerator {
+    // each hashmap contains the name of the function and whether or not it has been used in the
     private static HashMap<String,Boolean> methodNames = new HashMap<>();
     private static HashMap<String,Boolean> variableNames = new HashMap<>();
 
+    // generates all the possible names
     public static void init() {
+
         // generate method names
+        methodNames = new HashMap<>();
         methodNames.put("foo",false);
         methodNames.put("init",false);
         methodNames.put("func",false);
@@ -25,8 +29,16 @@ public class NameGenerator {
         methodNames.put("writeUpdates",false);
         methodNames.put("getElementType",false);
         methodNames.put("getEquation",false);
+        methodNames.put("generate",false);
+        methodNames.put("start",false);
+        methodNames.put("cancel",false);
+        methodNames.put("getBackground",false);
+        methodNames.put("coolBackground",false);
+        methodNames.put("flush",false);
+
 
         // generate variable names
+        variableNames = new HashMap<>();
         variableNames.put("x",false);
         variableNames.put("y",false);
         variableNames.put("z",false);
@@ -36,6 +48,7 @@ public class NameGenerator {
         variableNames.put("i",false);
         variableNames.put("j",false);
         variableNames.put("k",false);
+        variableNames.put("time",false);
         variableNames.put("temp",false);
         variableNames.put("number",false);
         variableNames.put("done",false);
@@ -44,6 +57,16 @@ public class NameGenerator {
         variableNames.put("num",false);
         variableNames.put("finish",false);
         variableNames.put("counter",false);
+        variableNames.put("min",false);
+        variableNames.put("max",false);
+        variableNames.put("counter",false);
+        variableNames.put("payment",false);
+        variableNames.put("timesPerYear",false);
+        variableNames.put("counter",false);
+        variableNames.put("theta",false);
+        variableNames.put("cosx",false);
+        variableNames.put("cosy",false);
+        variableNames.put("start",false);
     }
 
     public static String getRandomMethodName() {
