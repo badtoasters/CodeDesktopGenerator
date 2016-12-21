@@ -1,4 +1,4 @@
-package curtis.toaster.stuff;
+package curtis.toaster.Blocks;
 
 /**
  * Created by Badtoasters on 12/20/2016.

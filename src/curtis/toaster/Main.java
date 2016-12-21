@@ -1,6 +1,6 @@
 package curtis.toaster;
 
-import curtis.toaster.stuff.*;
+import curtis.toaster.Blocks.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

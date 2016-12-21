@@ -1,4 +1,4 @@
-package curtis.toaster.stuff;
+package curtis.toaster.Blocks;
 
 import curtis.toaster.NameGenerator;
 
