@@ -1,6 +1,6 @@
-CodeDesktopGenerator
+Hello L33t Hacker!
 
-This project is rather simple. I created a program that would generate interesting backgrounds for my computer. Inside CodeDesktopGenerator/.idea/artifacts/ there is an executible that I placed in the start folder to be automatically run everytime my computer starts. Currently it only works on windows operating systems. Be free to use the code as it is covered by the licence below.
+This project is rather simple. I created a program that would generate interesting backgrounds for my computer. These backgrounds have a randomly generated piece of java code on an interesting background. Inside CodeDesktopGenerator/.idea/artifacts/ there is an executible that I placed in the start folder to be automatically run everytime my computer starts. Currently it only works on windows operating systems. Be free to use the code as it is covered by the licence below.
 
 
 @licence
