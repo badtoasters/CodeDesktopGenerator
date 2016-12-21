@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="codeGenerator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/codeGenerator_jar</output-path>
+    <root id="archive" name="codeGenerator.jar">
+      <element id="module-output" name="codeGenerator" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/java/dev/jna/jna-platform/4.0.0/jna-platform-4.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/java/dev/jna/jna/4.0.0/jna-4.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/jna-3.0.9.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
