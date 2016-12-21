@@ -27,6 +27,7 @@ public class Main {
         // expends the bot net
         generate(method);
 
+        // optional, can be removed
         System.out.println(method);
 
         // creates the background
