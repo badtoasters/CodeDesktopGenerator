@@ -51,7 +51,7 @@ public class Main {
 
         BufferedImage image = new BufferedImage(width,height,BufferedImage.TYPE_BYTE_INDEXED);
         Graphics2D g2d = image.createGraphics();
-        image = setGradientMask(image , SwingConstants.VERTICAL);
+        image = setGradientMask(image);
 
         g2d.setColor(Color.WHITE);
         g2d.setFont( new Font("Verdana", Font.PLAIN ,20) );
@@ -94,15 +94,16 @@ public class Main {
         }
     }
 
-    public static BufferedImage setGradientMask(BufferedImage gradient, int orientation) {
+    public static BufferedImage setGradientMask(BufferedImage gradient) {
         // algorithm derived from Romain Guy's blog
+        Random gen = new Random();
 
         Graphics2D g = gradient.createGraphics();
         GradientPaint paint = new GradientPaint(0.0f, 0.0f,
                 new Color(000000),
-                orientation == SwingConstants.HORIZONTAL? gradient.getWidth() : 0.0f,
-                orientation == SwingConstants.VERTICAL? gradient.getHeight() : 0.0f,
-                new Color(660000));
+                gradient.getWidth()*2 * (.5f + gen.nextFloat()),
+                gradient.getHeight()*6 * (.5f +gen.nextFloat()),
+                new Color(0x660000));
         g.setPaint(paint);
         g.fill(new Rectangle2D.Double(0, 0, gradient.getWidth(), gradient.getHeight()));
 
