@@ -40,7 +40,7 @@ public class BlockMethod extends Block {
         Random gen = new Random();
         int numParams = gen.nextInt(4) + 2;
         for ( int i = 0 ; i < numParams ; i++ ) {
-            Variable var = new Variable(Type.Type_int, NameGenerator.getRandomVariableName(), "10");
+            Variable var = new Variable(Type.random(), NameGenerator.getRandomVariableName(), "10");
             addVariable(var);
             parameterVariables.add(var);
         }

@@ -10,6 +10,7 @@ public class NameGenerator {
     // each hashmap contains the name of the function and whether or not it has been used in the
     private static HashMap<String,Boolean> methodNames = new HashMap<>();
     private static HashMap<String,Boolean> variableNames = new HashMap<>();
+    private static HashMap<String,Boolean> objectNames = new HashMap<>();
 
     // generates all the possible names
     public static void init() {
@@ -35,7 +36,6 @@ public class NameGenerator {
         methodNames.put("getBackground",false);
         methodNames.put("coolBackground",false);
         methodNames.put("flush",false);
-
 
         // generate variable names
         variableNames = new HashMap<>();
@@ -63,10 +63,26 @@ public class NameGenerator {
         variableNames.put("payment",false);
         variableNames.put("timesPerYear",false);
         variableNames.put("counter",false);
+        variableNames.put("alpha",false);
+        variableNames.put("beta",false);
+        variableNames.put("delta",false);
         variableNames.put("theta",false);
         variableNames.put("cosx",false);
         variableNames.put("cosy",false);
         variableNames.put("start",false);
+
+        // generate object names
+        objectNames.put("Apple",false);
+        objectNames.put("Block",false);
+        objectNames.put("NameGenerator",false);
+        objectNames.put("Candidate",false);
+        objectNames.put("State",false);
+        objectNames.put("Graph",false);
+        objectNames.put("Plant",false);
+        objectNames.put("Predator",false);
+        objectNames.put("Background",false);
+        objectNames.put("GradientMaker",false);
+        objectNames.put("Color",false);
     }
 
     public static String getRandomMethodName() {
@@ -96,6 +112,23 @@ public class NameGenerator {
             varName = (String) variableNames.keySet().toArray()[i];
             if ( !variableNames.get(varName) ) {
                 variableNames.put(varName, true);
+                done = true;
+            }
+        }
+
+        return varName;
+    }
+
+    public static String getObjectName() {
+        Random gen = new Random();
+
+        String varName = "";
+        boolean done = false;
+        while ( ! done ) {
+            int i = gen.nextInt(objectNames.size());
+            varName = (String) objectNames.keySet().toArray()[i];
+            if ( !objectNames.get(varName) ) {
+                objectNames.put(varName, true);
                 done = true;
             }
         }

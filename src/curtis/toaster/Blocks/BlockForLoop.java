@@ -51,7 +51,7 @@ public class BlockForLoop extends Block {
 
         // generates the testValue to be compared against
         // if true then use random value
-        if ( gen.nextInt(10) > 7 ) {
+        if ( gen.nextInt(10) > 5 ) {
             testValue = gen.nextInt(100) + "";
         }
         // otherwise grab an existing variable

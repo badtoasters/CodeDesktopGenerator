@@ -96,14 +96,14 @@ public class Main {
             double d = gen.nextGaussian();
 
             // adds a for loop to the code
-            if ( d < -.9 && parent.getLayer() < 3 ) {
+            if ( d < -.7 && parent.getLayer() < 3 ) {
                 BlockForLoop newBlock = new BlockForLoop(0);
                 parent.addChildren(newBlock);
                 newBlock.randomize();
                 generate(newBlock);
             }
             // adds a if block to the code
-            else if ( d < -.5 && parent.getLayer() < 3 ) {
+            else if ( d < -.3 && parent.getLayer() < 3 ) {
                 BlockIfStatement newBlock = new BlockIfStatement(0);
                 parent.addChildren(newBlock);
                 newBlock.randomize();
@@ -112,8 +112,16 @@ public class Main {
             // adds a deceleration block to the code
             else if ( d < 0) {
                 BlockDeceleration newBlock = new BlockDeceleration(0);
-                newBlock.randomize();
+
                 parent.addChildren(newBlock);
+                newBlock.randomize();
+            }
+            // adds a function call block to the code
+            else if ( d < .3 && parent.getVariables().size() > 0 ) {
+                // this function must be added to the children and then randomized
+                BlockFunctionCall newBlock = new BlockFunctionCall(0);
+                parent.addChildren(newBlock);
+                newBlock.randomize();
             }
             // adds a set value block to the code
             else {
@@ -133,13 +141,31 @@ public class Main {
         // algorithm derived from Romain Guy's blog
         Random gen = new Random();
 
+        // randomly generates color
+        Color col;
+        switch (gen.nextInt(4)) {
+            case 0:
+                col = new Color(0x000077);
+                break;
+            case 1:
+                col = new Color(0x007700);
+                break;
+            case 2:
+                col = new Color(0x770000);
+                break;
+            default:
+                col = new Color(0x999999);
+                break;
+
+        }
+
         // random gradient direction
         Graphics2D g = image.createGraphics();
         GradientPaint paint = new GradientPaint(0.0f, 0.0f,
                 new Color(000000),
-                image.getWidth()*2 * (.25f + 2*gen.nextFloat()),
-                image.getHeight()*6 * (.25f + 2*gen.nextFloat()),
-                new Color(0x660000));
+                image.getWidth()*2 * (.10f + 1.7f*gen.nextFloat()),
+                image.getHeight()*6 * (.10f + 1.7f*gen.nextFloat()),
+                col);
         g.setPaint(paint);
         g.fill(new Rectangle2D.Double(0, 0, image.getWidth(), image.getHeight()));
 

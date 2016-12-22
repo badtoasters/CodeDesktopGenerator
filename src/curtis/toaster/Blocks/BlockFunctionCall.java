@@ -10,6 +10,7 @@ import java.util.Random;
 public class BlockFunctionCall extends Block {
     private Variable callingVariable;
     private String function;
+    private boolean newVariable = false;
 
     public BlockFunctionCall(int layer) {
         super(layer);
@@ -21,6 +22,7 @@ public class BlockFunctionCall extends Block {
         Random gen = new Random();
         int i = gen.nextInt(getVariables().size());
         setCallingVariable(getVariables().get(i));
+        newVariable = false;
 
         // Selects random function name
         setFunction(NameGenerator.getRandomMethodName());
@@ -44,6 +46,13 @@ public class BlockFunctionCall extends Block {
 
     @Override
     public String toString() {
-        return tab() + callingVariable + "." + function + "();";
+        String beginning = "";
+
+        if ( callingVariable.getType() == Type.Type_object ) {
+            beginning += callingVariable.getName() + ".";
+        } else {
+            beginning += callingVariable.getName() + " = ";
+        }
+        return tab() + beginning + function + "();";
     }
 }

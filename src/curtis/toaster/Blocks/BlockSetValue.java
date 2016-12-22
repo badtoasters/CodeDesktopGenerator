@@ -1,5 +1,7 @@
 package curtis.toaster.Blocks;
 
+import curtis.toaster.NameGenerator;
+
 import java.util.Random;
 
 /**
@@ -46,6 +48,9 @@ public class BlockSetValue extends Block {
                     int j = gen.nextInt(getVariables().size());
                     value = getVariables().get(j)+"";
                 }
+                else if ( variable.getType() == Type.Type_boolean ) {
+                    value = gen.nextBoolean() ? "true":"false";
+                }
                 else {
                     // if the variable was of a bad type
                     // randomly generate a constant
@@ -74,12 +79,19 @@ public class BlockSetValue extends Block {
 
     @Override
     public String toString() {
-        String tab = "";
-        for ( int t = 0 ; t < getLayer() ; t ++ ) {
-            tab += "\t";
+        String line = "";
+        if ( variable.getType().equals(Type.Type_object)) {
+            line = tab() + variable.getName() + " = " + NameGenerator.getRandomMethodName()+ "(" + value + ")";
         }
-
-        String line = tab + variable.getName() + " " + operator + " " + value + ";";
+        else if ( variable.getType().equals(Type.Type_string)) {
+            line = tab() + variable.getName() + " = " + variable.getName() + " + " + value;
+        }
+        else if ( variable.getType().equals(Type.Type_boolean)) {
+            line = tab() + variable.getName() + " = " + value;
+        }
+        else {
+            line = tab() + variable.getName() + " " + operator + " " + value + ";";
+        }
 
         return line;
     }
