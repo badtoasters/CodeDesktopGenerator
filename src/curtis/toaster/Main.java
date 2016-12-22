@@ -110,14 +110,14 @@ public class Main {
                 generate(newBlock);
             }
             // adds a deceleration block to the code
-            else if ( d < .25) {
+            else if ( d < -.3) {
                 BlockDeceleration newBlock = new BlockDeceleration(0);
 
                 parent.addChildren(newBlock);
                 newBlock.randomize();
             }
             // adds a function call block to the code
-            else if ( d < .8 && parent.getVariables().size() > 0 ) {
+            else if ( d < 0 && parent.getVariables().size() > 0 ) {
                 // this function must be added to the children and then randomized
                 BlockFunctionCall newBlock = new BlockFunctionCall(0);
                 parent.addChildren(newBlock);

@@ -70,6 +70,10 @@ public class BlockForLoop extends Block {
                 // sets testValue to the cast of the variables name
                 testValue = "Integer.parseInt(" + variable.getName() + ")";
             }
+            else {
+                // otherwise testValue should be random
+                testValue = gen.nextInt(100) + "";
+            }
         }
     }
 
