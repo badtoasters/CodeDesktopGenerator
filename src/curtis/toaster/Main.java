@@ -102,8 +102,8 @@ public class Main {
                 newBlock.randomize();
                 generate(newBlock);
             }
-            // adds a if block to the code
-            else if ( d < -.3 && parent.getLayer() < 3 ) {
+            // adds an if block to the code
+            else if ( d < 0 && parent.getLayer() < 3 ) {
                 BlockIfStatement newBlock = new BlockIfStatement(0);
                 parent.addChildren(newBlock);
                 newBlock.randomize();

@@ -61,18 +61,33 @@ public class BlockIfStatement extends Block {
                 operator = ">=";
                 break;
         }
+        if ( variable.getType() == Type.Type_boolean ) {
+            operator = gen.nextBoolean() ? "" : "!";
+        }
 
         expectedValue = gen.nextInt(100) + "";
     }
 
     @Override
     public String toString() {
-        String tab = "";
-        for ( int t = 0 ; t < getLayer() ; t ++ ) {
-            tab += "\t";
+        String line = "";
+        if ( variable.getType() == Type.Type_boolean ) {
+            line = tab() + "if(" +operator+ variable + ") { \n";
         }
-
-        String line = tab + "if("+variable+" "+operator+" "+expectedValue+") { \n";
+        else if ( variable.getType() == Type.Type_string ) {
+            Random gen = new Random();
+            int i = gen.nextInt(getVariables().size());
+            Variable compare = getVariables().get(i);
+            if ( compare.getType() == Type.Type_string ) {
+                line = tab() + "if( " + compare + ".equals(" + variable + ") ) { \n";
+            }
+            else if ( compare.getType() == Type.Type_object ) {
+                line = tab() + "if( " + variable + ".equals(" + compare + ".toString() ) ) { \n";
+            }
+        }
+        else {
+            line = tab() + "if(" + variable + " " + operator + " " + expectedValue + ") { \n";
+        }
 
         // prints children
         if ( getChildren().size() > 0 ) {
@@ -80,7 +95,7 @@ public class BlockIfStatement extends Block {
                 line = line + getChildren().get(i).toString() + "\n";
             }
         }
-        line = line + tab + "}";
+        line = line + tab() + "}";
 
         return line;
     }

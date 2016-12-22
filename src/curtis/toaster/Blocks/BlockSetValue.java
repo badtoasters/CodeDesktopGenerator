@@ -46,7 +46,13 @@ public class BlockSetValue extends Block {
                 if ( variable.getType() == Type.Type_int || variable.getType() == Type.Type_double ) {
                     // sets testValue to simply the variable's name
                     int j = gen.nextInt(getVariables().size());
-                    value = getVariables().get(j)+"";
+                    if ( getVariables().get(j).getType() == variable.getType() &&
+                            getVariables().get(j).getName() == variable.getName()) {
+                        value = getVariables().get(j) + "";
+                    } else {
+                        // try again
+                        randomize();
+                    }
                 }
                 else if ( variable.getType() == Type.Type_boolean ) {
                     value = gen.nextBoolean() ? "true":"false";
@@ -62,7 +68,6 @@ public class BlockSetValue extends Block {
             variable = newVar;
             value = gen.nextInt(100)+"";
         }
-
         int op = gen.nextInt(3);
         switch (op) {
             case 0:
@@ -81,10 +86,10 @@ public class BlockSetValue extends Block {
     public String toString() {
         String line = "";
         if ( variable.getType().equals(Type.Type_object)) {
-            line = tab() + variable.getName() + " = " + NameGenerator.getRandomMethodName()+ "(" + value + ")";
+            line = tab() + variable.getName() + " = " + NameGenerator.getRandomMethodName()+ "(" + value + ");";
         }
         else if ( variable.getType().equals(Type.Type_string)) {
-            line = tab() + variable.getName() + " = " + variable.getName() + " + " + value;
+            line = tab() + variable.getName() + " = " + variable.getName() + " + \"" + value + "\"";
         }
         else if ( variable.getType().equals(Type.Type_boolean)) {
             line = tab() + variable.getName() + " = " + value;

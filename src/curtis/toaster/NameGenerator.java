@@ -79,10 +79,11 @@ public class NameGenerator {
         objectNames.put("State",false);
         objectNames.put("Graph",false);
         objectNames.put("Plant",false);
-        objectNames.put("Predator",false);
+        objectNames.put("Font",false);
         objectNames.put("Background",false);
         objectNames.put("GradientMaker",false);
         objectNames.put("Color",false);
+        objectNames.put("flush",false);
     }
 
     public static String getRandomMethodName() {
