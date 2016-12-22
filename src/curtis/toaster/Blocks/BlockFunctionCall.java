@@ -70,7 +70,7 @@ public class BlockFunctionCall extends Block {
             end += " " + parameterVariables.get(var).getName() +
                     (var == parameterVariables.size() - 1 ? " ":" ,");
         }
-        end += ");\n";
+        end += ");";
         return end;
     }
 }

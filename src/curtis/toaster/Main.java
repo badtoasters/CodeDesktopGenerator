@@ -96,28 +96,28 @@ public class Main {
             double d = gen.nextGaussian();
 
             // adds a for loop to the code
-            if ( d < -.7 && parent.getLayer() < 3 ) {
+            if ( d < -1 && parent.getLayer() < 3 ) {
                 BlockForLoop newBlock = new BlockForLoop(0);
                 parent.addChildren(newBlock);
                 newBlock.randomize();
                 generate(newBlock);
             }
             // adds an if block to the code
-            else if ( d < -.3 && parent.getLayer() < 3 ) {
+            else if ( d < -.4 && parent.getLayer() < 3 ) {
                 BlockIfStatement newBlock = new BlockIfStatement(0);
                 parent.addChildren(newBlock);
                 newBlock.randomize();
                 generate(newBlock);
             }
             // adds a deceleration block to the code
-            else if ( d < .3) {
+            else if ( d < .25) {
                 BlockDeceleration newBlock = new BlockDeceleration(0);
 
                 parent.addChildren(newBlock);
                 newBlock.randomize();
             }
             // adds a function call block to the code
-            else if ( d < .6 && parent.getVariables().size() > 0 ) {
+            else if ( d < .8 && parent.getVariables().size() > 0 ) {
                 // this function must be added to the children and then randomized
                 BlockFunctionCall newBlock = new BlockFunctionCall(0);
                 parent.addChildren(newBlock);
