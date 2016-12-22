@@ -103,21 +103,21 @@ public class Main {
                 generate(newBlock);
             }
             // adds an if block to the code
-            else if ( d < 0 && parent.getLayer() < 3 ) {
+            else if ( d < -.3 && parent.getLayer() < 3 ) {
                 BlockIfStatement newBlock = new BlockIfStatement(0);
                 parent.addChildren(newBlock);
                 newBlock.randomize();
                 generate(newBlock);
             }
             // adds a deceleration block to the code
-            else if ( d < 0) {
+            else if ( d < .3) {
                 BlockDeceleration newBlock = new BlockDeceleration(0);
 
                 parent.addChildren(newBlock);
                 newBlock.randomize();
             }
             // adds a function call block to the code
-            else if ( d < .3 && parent.getVariables().size() > 0 ) {
+            else if ( d < .6 && parent.getVariables().size() > 0 ) {
                 // this function must be added to the children and then randomized
                 BlockFunctionCall newBlock = new BlockFunctionCall(0);
                 parent.addChildren(newBlock);

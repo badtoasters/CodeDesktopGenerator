@@ -36,6 +36,7 @@ public class NameGenerator {
         methodNames.put("getBackground",false);
         methodNames.put("coolBackground",false);
         methodNames.put("flush",false);
+        methodNames.put("randomize",false);
 
         // generate variable names
         variableNames = new HashMap<>();

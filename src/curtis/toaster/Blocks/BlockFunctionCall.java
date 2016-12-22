@@ -2,6 +2,7 @@ package curtis.toaster.Blocks;
 
 import curtis.toaster.NameGenerator;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -11,6 +12,7 @@ public class BlockFunctionCall extends Block {
     private Variable callingVariable;
     private String function;
     private boolean newVariable = false;
+    private ArrayList<Variable> parameterVariables = new ArrayList<>();
 
     public BlockFunctionCall(int layer) {
         super(layer);
@@ -23,6 +25,15 @@ public class BlockFunctionCall extends Block {
         int i = gen.nextInt(getVariables().size());
         setCallingVariable(getVariables().get(i));
         newVariable = false;
+
+        int numParams = gen.nextInt(4);
+        for ( int num = 0 ; num < numParams ; num++ ) {
+            i = gen.nextInt(getVariables().size());
+            Variable toAdd = getVariables().get(i);
+            if ( !parameterVariables.contains( toAdd )) {
+                parameterVariables.add(getVariables().get(i));
+            }
+        }
 
         // Selects random function name
         setFunction(NameGenerator.getRandomMethodName());
@@ -53,6 +64,13 @@ public class BlockFunctionCall extends Block {
         } else {
             beginning += callingVariable.getName() + " = ";
         }
-        return tab() + beginning + function + "();";
+        String end = tab() + beginning + function + "(";
+
+        for (int var = 0; var < parameterVariables.size() ; var ++ ) {
+            end += " " + parameterVariables.get(var).getName() +
+                    (var == parameterVariables.size() - 1 ? " ":" ,");
+        }
+        end += ");\n";
+        return end;
     }
 }

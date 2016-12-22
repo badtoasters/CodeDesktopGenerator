@@ -47,7 +47,7 @@ public class BlockSetValue extends Block {
                     // sets testValue to simply the variable's name
                     int j = gen.nextInt(getVariables().size());
                     if ( getVariables().get(j).getType() == variable.getType() &&
-                            getVariables().get(j).getName() == variable.getName()) {
+                            getVariables().get(j).getName() != variable.getName()) {
                         value = getVariables().get(j) + "";
                     } else {
                         // try again
