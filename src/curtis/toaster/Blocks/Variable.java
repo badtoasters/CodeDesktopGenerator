@@ -3,12 +3,12 @@ package curtis.toaster.Blocks;
 /**
  * Created by Badtoasters on 12/20/2016.
  */
-public class Object {
+public class Variable {
     private Type type = null;
     private String name;
     private String value;
 
-    public Object( Type type , String name, String value ) {
+    public Variable(Type type , String name, String value ) {
         this.type = type;
         this.name = name;
         this.value = value;

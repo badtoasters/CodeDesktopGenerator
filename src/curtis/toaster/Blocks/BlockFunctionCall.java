@@ -2,14 +2,13 @@ package curtis.toaster.Blocks;
 
 import curtis.toaster.NameGenerator;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 /**
  * Created by Badtoasters on 12/20/2016.
  */
 public class BlockFunctionCall extends Block {
-    private Object callingObject;
+    private Variable callingVariable;
     private String function;
 
     public BlockFunctionCall(int layer) {
@@ -21,18 +20,18 @@ public class BlockFunctionCall extends Block {
         // selects random object
         Random gen = new Random();
         int i = gen.nextInt(getVariables().size());
-        setCallingObject(getVariables().get(i));
+        setCallingVariable(getVariables().get(i));
 
         // Selects random function name
         setFunction(NameGenerator.getRandomMethodName());
     }
 
-    public String getCallingObject() {
-        return callingObject;
+    public Variable getCallingVariable() {
+        return callingVariable;
     }
 
-    public void setCallingObject(Object callingObject) {
-        this.callingObject = callingObject;
+    public void setCallingVariable(Variable callingVariable) {
+        this.callingVariable = callingVariable;
     }
 
     public String getFunction() {
@@ -45,6 +44,6 @@ public class BlockFunctionCall extends Block {
 
     @Override
     public String toString() {
-        return tab() + callingObject + "." + function + "();";
+        return tab() + callingVariable + "." + function + "();";
     }
 }

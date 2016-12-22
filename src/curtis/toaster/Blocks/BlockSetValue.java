@@ -6,15 +6,15 @@ import java.util.Random;
  * Created by Badtoasters on 12/20/2016.
  */
 public class BlockSetValue extends Block {
-    private Object variable;
+    private Variable variable;
     private String operator = "";
     private String value = "";
 
-    public Object getVariable() {
+    public Variable getVariable() {
         return variable;
     }
 
-    public void setVariable(Object variable) {
+    public void setVariable(Variable variable) {
         this.variable = variable;
     }
 
@@ -53,7 +53,7 @@ public class BlockSetValue extends Block {
                 }
             }
         } else {
-            Object newVar = new Object(Type.Type_int,"a",gen.nextInt(100)+"");
+            Variable newVar = new Variable(Type.Type_int,"a",gen.nextInt(100)+"");
             variable = newVar;
             value = gen.nextInt(100)+"";
         }

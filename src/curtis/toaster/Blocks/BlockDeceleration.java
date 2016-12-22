@@ -8,14 +8,14 @@ import java.util.Random;
  * Created by Badtoasters on 12/20/2016.
  */
 public class BlockDeceleration extends Block {
-    private Object variableToCreate;
+    private Variable variableToCreate;
     private String valueToSet = "null";
 
-    public Object getVariableToCreate() {
+    public Variable getVariableToCreate() {
         return variableToCreate;
     }
 
-    public void setVariableToCreate(Object variable) {
+    public void setVariableToCreate(Variable variable) {
         this.variableToCreate = variable;
     }
 
@@ -34,7 +34,7 @@ public class BlockDeceleration extends Block {
     @Override
     public void randomize() {
         Random gen = new Random();
-        setVariableToCreate( new Object(Type.Type_int, NameGenerator.getRandomVariableName() ,gen.nextInt(100)+"") );
+        setVariableToCreate( new Variable(Type.Type_int, NameGenerator.getRandomVariableName() ,gen.nextInt(100)+"") );
 
         if (variableToCreate.getType() == Type.Type_int) {
             valueToSet = gen.nextInt(100) + "";

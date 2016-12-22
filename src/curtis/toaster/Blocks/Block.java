@@ -8,7 +8,7 @@ import java.util.Collection;
  */
 public abstract class Block {
     private ArrayList<Block> children = new ArrayList<>();
-    private ArrayList<Object> variables = new ArrayList<>();
+    private ArrayList<Variable> variables = new ArrayList<>();
     private int layer = 0;
 
     public Block( int layer ) {
@@ -19,7 +19,7 @@ public abstract class Block {
         return children;
     }
 
-    public ArrayList<Object> getVariables() {
+    public ArrayList<Variable> getVariables() {
         return variables;
     }
 
@@ -42,16 +42,16 @@ public abstract class Block {
         }
     }
 
-    public void setVariable(ArrayList<Object> vars) {
+    public void setVariable(ArrayList<Variable> vars) {
         variables = vars;
     }
 
-    public void addVariable(Object var) {
+    public void addVariable(Variable var) {
         variables.add(var);
     }
 
-    public void addVariable(ArrayList<Object> vars) {
-        variables.addAll((Collection<? extends Object>) vars.clone());
+    public void addVariable(ArrayList<Variable> vars) {
+        variables.addAll((Collection<? extends Variable>) vars.clone());
     }
 
     public void setLayer( int layer ) {

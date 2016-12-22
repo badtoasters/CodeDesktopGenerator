@@ -8,7 +8,7 @@ import java.util.Random;
 public class BlockIfStatement extends Block {
     private String operator;
     private String expectedValue;
-    private Object variable;
+    private Variable variable;
 
     public BlockIfStatement(int layer) {
         super(layer);
@@ -30,11 +30,11 @@ public class BlockIfStatement extends Block {
         this.expectedValue = expectedValue;
     }
 
-    public Object getVariableToCheck() {
+    public Variable getVariableToCheck() {
         return variable;
     }
 
-    public void setVariableToCheck(Object variableToCheck) {
+    public void setVariableToCheck(Variable variableToCheck) {
         this.variable = variableToCheck;
     }
 

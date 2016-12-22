@@ -8,7 +8,7 @@ import java.util.Random;
  * Created by Badtoasters on 12/20/2016.
  */
 public class BlockForLoop extends Block {
-    private Object loopingVariable;
+    private Variable loopingVariable;
     private String operator;
     private String testValue;
 
@@ -16,11 +16,11 @@ public class BlockForLoop extends Block {
         super(layer);
     }
 
-    public Object getLoopingVariable() {
+    public Variable getLoopingVariable() {
         return loopingVariable;
     }
 
-    public void setLoopingVariable(Object loopingVariable) {
+    public void setLoopingVariable(Variable loopingVariable) {
         this.loopingVariable = loopingVariable;
     }
 
@@ -36,7 +36,7 @@ public class BlockForLoop extends Block {
     public void randomize() {
         // generates the var that is looped
         Random gen = new Random();
-        loopingVariable = new Object(Type.Type_int, NameGenerator.getRandomVariableName(), gen.nextInt(100)+"");
+        loopingVariable = new Variable(Type.Type_int, NameGenerator.getRandomVariableName(), gen.nextInt(100)+"");
 
         // generates the operator for the for loop
         int op = gen.nextInt(2);
@@ -57,7 +57,7 @@ public class BlockForLoop extends Block {
         // otherwise grab an existing variable
         else {
             int i = gen.nextInt(getVariables().size());
-            Object variable = getVariables().get(i);
+            Variable variable = getVariables().get(i);
             if ( variable.getType() == Type.Type_int ) {
                 // sets testValue to simply the variable's name
                 testValue = variable.getName();

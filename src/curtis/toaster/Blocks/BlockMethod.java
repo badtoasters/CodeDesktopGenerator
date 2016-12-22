@@ -11,7 +11,7 @@ import java.util.Random;
 public class BlockMethod extends Block {
     private String methodName;
     // holds the parameters for the methods
-    private ArrayList<Object> parameterVariables = new ArrayList<>();
+    private ArrayList<Variable> parameterVariables = new ArrayList<>();
     // return type
     private Type returnType;
 
@@ -40,7 +40,7 @@ public class BlockMethod extends Block {
         Random gen = new Random();
         int numParams = gen.nextInt(4) + 2;
         for ( int i = 0 ; i < numParams ; i++ ) {
-            Object var = new Object(Type.Type_int, NameGenerator.getRandomVariableName(), "10");
+            Variable var = new Variable(Type.Type_int, NameGenerator.getRandomVariableName(), "10");
             addVariable(var);
             parameterVariables.add(var);
         }
