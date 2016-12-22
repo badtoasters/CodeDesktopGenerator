@@ -60,6 +60,18 @@ public abstract class Block {
 
     public abstract void randomize();
 
+    /**
+     *
+     * @return the correct tab length for the line
+     */
+    public String tab() {
+        String tab = "";
+        for ( int t = 0 ; t < getLayer() ; t ++ ) {
+            tab += "\t";
+        }
+        return tab;
+    }
+
     @Override
     public abstract String toString();
 }

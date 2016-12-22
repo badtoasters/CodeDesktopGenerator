@@ -46,6 +46,7 @@ public class BlockMethod extends Block {
         }
 
         returnType = Type.Type_int;
+
     }
 
     @Override
