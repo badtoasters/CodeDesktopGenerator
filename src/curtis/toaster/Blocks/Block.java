@@ -2,6 +2,7 @@ package curtis.toaster.Blocks;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 
 /**
  * Created by Badtoasters on 12/20/2016.
@@ -59,6 +60,46 @@ public abstract class Block {
     }
 
     public abstract void randomize();
+
+    /**
+     * this method finalizes the block and finds the most common variable
+     */
+    public HashMap<Variable,Integer> findOccurrence() {
+        // holds the numOccurrence for each of the children variables
+        HashMap<Variable,Integer> numOccurrence = new HashMap<Variable, Integer>();
+
+        // adds the variables in the children of this block
+        for ( Block block : getChildren() ) {
+            HashMap<Variable,Integer> childOccurrence = block.findOccurrence();
+            for ( Variable var : childOccurrence.keySet() ) {
+                // increments the number of occurrences
+                int number = childOccurrence.get(var);
+                // combines the occurrences
+                if ( numOccurrence.containsKey(var) ) {
+                    number += numOccurrence.get(var);
+                    numOccurrence.put( var, number );
+                }
+                // otherwise grab the occurrences of the child
+                else {
+                    numOccurrence.put( var, number );
+                }
+            }
+        }
+
+        // finds the occurrences of variable this Block contains
+        for ( Variable var : getVariables() ) {
+            int number = 1;
+            if ( numOccurrence.containsKey(var) ) {
+                number += numOccurrence.get(var);
+                numOccurrence.put( var, number );
+            }
+            else {
+                numOccurrence.put( var, number );
+            }
+        }
+
+        return numOccurrence;
+    }
 
     /**
      *

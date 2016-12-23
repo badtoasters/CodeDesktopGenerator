@@ -36,12 +36,13 @@ public class BlockSetValue extends Block {
         Random gen = new Random();
         int i = gen.nextInt(getVariables().size());
         variable = getVariables().get(i);
+
         if ( getVariables().size() > 0 ) {
             if ( gen.nextInt(10) > 7 ) {
                 // randomly generate a constant
                 value = gen.nextInt(100) + "";
             }
-            // otherwise grab an existing variable
+            // otherwise set to an existing variable
             else {
                 if ( variable.getType() == Type.Type_int || variable.getType() == Type.Type_double ) {
                     // sets testValue to simply the variable's name

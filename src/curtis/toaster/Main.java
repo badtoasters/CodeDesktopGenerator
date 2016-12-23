@@ -24,8 +24,9 @@ public class Main {
         method.setMethodName(NameGenerator.getRandomMethodName());
         method.randomize();
 
-        // expends the bot net
+        // Populates block with children
         generate(method);
+        method.calcReturnVar();
 
         // optional, can be removed
         System.out.println(method);

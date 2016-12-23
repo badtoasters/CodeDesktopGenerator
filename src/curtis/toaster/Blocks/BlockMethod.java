@@ -3,6 +3,7 @@ package curtis.toaster.Blocks;
 import curtis.toaster.NameGenerator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 /**
@@ -13,14 +14,14 @@ public class BlockMethod extends Block {
     // holds the parameters for the methods
     private ArrayList<Variable> parameterVariables = new ArrayList<>();
     // return type
-    private Type returnType;
+    private Variable returnVar;
 
-    public Type getReturnType() {
-        return returnType;
+    public Variable getReturnVar() {
+        return returnVar;
     }
 
-    public void setReturnType(Type returnType) {
-        this.returnType = returnType;
+    public void setReturnVar(Variable returnVar) {
+        this.returnVar = returnVar;
     }
 
     public String getMethodName() {
@@ -35,6 +36,21 @@ public class BlockMethod extends Block {
         super(layer);
     }
 
+    public void calcReturnVar() {
+        HashMap<Variable,Integer> numOccurrence = this.findOccurrence();
+
+        int max = 0;
+        Variable maxVar = new Variable();
+        for ( Variable var : numOccurrence.keySet() ) {
+            if ( numOccurrence.get(var) > max ) {
+                maxVar = var;
+                max = numOccurrence.get(var);
+            }
+        }
+
+        returnVar = maxVar;
+    }
+
     @Override
     public void randomize() {
         Random gen = new Random();
@@ -44,9 +60,6 @@ public class BlockMethod extends Block {
             addVariable(var);
             parameterVariables.add(var);
         }
-
-        returnType = Type.Type_int;
-
     }
 
     @Override
@@ -56,7 +69,7 @@ public class BlockMethod extends Block {
             tab = "\t";
         }
 
-        String line = tab + "public " + returnType + " " + methodName + "(";
+        String line = tab + "public " + returnVar.getType() + " " + methodName + "(";
         for (int var = 0; var < parameterVariables.size() ; var ++ ) {
             line += " " + parameterVariables.get(var).getType() +
                     " " + parameterVariables.get(var).getName() +

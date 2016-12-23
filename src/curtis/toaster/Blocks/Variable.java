@@ -14,6 +14,15 @@ public class Variable {
         this.value = value;
     }
 
+    /**
+     * null variable constructor
+     */
+    public Variable() {
+        this.type = Type.Type_null;
+        this.name = "null";
+        this.value = "null";
+    }
+
     public Type getType() {
         return type;
     }
