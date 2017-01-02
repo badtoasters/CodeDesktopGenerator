@@ -113,7 +113,6 @@ public class Main {
             // adds a deceleration block to the code
             else if ( d < -.3) {
                 BlockDeceleration newBlock = new BlockDeceleration(0);
-
                 parent.addChildren(newBlock);
                 newBlock.randomize();
             }

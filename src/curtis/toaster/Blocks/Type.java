@@ -31,7 +31,7 @@ public enum Type {
     public static Type random() {
         Random gen = new Random();
 
-        switch (gen.nextInt(5)) {
+        switch (gen.nextInt(4)) {
             default:
             case 0:
                 return Type_int;

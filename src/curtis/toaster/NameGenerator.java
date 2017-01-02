@@ -70,7 +70,7 @@ public class NameGenerator {
         variableNames.put("theta",false);
         variableNames.put("cosx",false);
         variableNames.put("cosy",false);
-        variableNames.put("start",false);
+        variableNames.put("startTime",false);
 
         // generate object names
         objectNames.put("Apple",false);
