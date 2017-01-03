@@ -39,15 +39,18 @@ public class BlockMethod extends Block {
     public void calcReturnVar() {
         HashMap<Variable,Integer> numOccurrence = this.findOccurrence();
 
+        // finds the most common variable in the method block
         int max = 0;
         Variable maxVar = new Variable();
-        for ( Variable var : numOccurrence.keySet() ) {
+        for ( Object varObj : numOccurrence.keySet().toArray() ) {
+            Variable var = (Variable) varObj;
             if ( numOccurrence.get(var) > max ) {
                 maxVar = var;
                 max = numOccurrence.get(var);
             }
         }
 
+        // sets the return variable to this most common return variable
         returnVar = maxVar;
     }
 
@@ -84,7 +87,7 @@ public class BlockMethod extends Block {
             }
         }
 
-        line = line + tab + "\treturn " + parameterVariables.get(0) + ";\n";
+        line = line + tab + "\treturn " + returnVar + ";\n";
         line = line + tab + "}";
 
         return line;

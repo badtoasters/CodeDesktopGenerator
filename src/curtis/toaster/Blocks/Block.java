@@ -71,7 +71,8 @@ public abstract class Block {
         // adds the variables in the children of this block
         for ( Block block : getChildren() ) {
             HashMap<Variable,Integer> childOccurrence = block.findOccurrence();
-            for ( Variable var : childOccurrence.keySet() ) {
+            for ( Object varObj : childOccurrence.keySet().toArray() ) {
+                Variable var = (Variable)varObj;
                 // increments the number of occurrences
                 int number = childOccurrence.get(var);
                 // combines the occurrences
@@ -87,14 +88,36 @@ public abstract class Block {
         }
 
         // finds the occurrences of variable this Block contains
-        for ( Variable var : getVariables() ) {
+        // depends on what type of block it is
+        Variable toAdd = null;
+        if ( this instanceof BlockDeceleration ) {
+            BlockDeceleration block = (BlockDeceleration) this;
+            toAdd = block.getVariableToCreate();
+        } else if ( this instanceof BlockForLoop ) {
+            BlockForLoop block = (BlockForLoop) this;
+            toAdd = block.getLoopingVariable();
+        } else if ( this instanceof BlockFunctionCall ) {
+            BlockFunctionCall block = (BlockFunctionCall) this;
+            toAdd = block.getCallingVariable();
+        } else if ( this instanceof BlockIfStatement ) {
+            BlockIfStatement block = (BlockIfStatement) this;
+            toAdd = block.getVariableToCheck();
+        } else if ( this instanceof BlockSetValue ) {
+            BlockSetValue block = (BlockSetValue) this;
+            toAdd = block.getVariable();
+        }
+
+        // increments variable amount
+        if ( toAdd != null ) {
+            // combines the occurrences
             int number = 1;
-            if ( numOccurrence.containsKey(var) ) {
-                number += numOccurrence.get(var);
-                numOccurrence.put( var, number );
+            if ( numOccurrence.containsKey(toAdd) ) {
+                number += numOccurrence.get(toAdd);
+                numOccurrence.put( toAdd, number );
             }
+            // otherwise grab the occurrences of the child
             else {
-                numOccurrence.put( var, number );
+                numOccurrence.put( toAdd, number );
             }
         }
 
