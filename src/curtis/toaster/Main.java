@@ -80,7 +80,15 @@ public class Main {
         String[] parts = method.split("\n");
 
         for ( int i = 0 ; i < parts.length ; i++ ) {
-            g2d.drawString(parts[i], width/5 , 25*i + height/8);
+            if ( 25 * i + height / 8 < 7* height/8) {
+                g2d.drawString(parts[i], width / 5, 25 * i + height / 8);
+            }
+            // second row of text
+            else {
+                g2d.setColor(Color.gray);
+                g2d.setFont(new Font("Verdana", Font.PLAIN ,12));
+                g2d.drawString(parts[i], 4 * width / 5, 25 * i - 5 * height/8 );
+            }
         }
 
         return image;
@@ -93,32 +101,32 @@ public class Main {
     public static void generate(Block parent) {
         Random gen = new Random();
         // function that controls the number of blocks at each layer
-        int number = gen.nextInt(5/(parent.getLayer()+1) )+2;
+        int number = gen.nextInt(5/(parent.getLayer()+1) )+5;
         for ( int i = 0 ; i < number ; i++ ) {
             double d = gen.nextGaussian();
 
             // adds a for loop to the code
-            if ( d < -1 && parent.getLayer() < 3 ) {
+            if ( d < -.5 && parent.getLayer()<0 ) {
                 BlockForLoop newBlock = new BlockForLoop(0);
                 parent.addChildren(newBlock);
                 newBlock.randomize();
                 generate(newBlock);
             }
             // adds an if block to the code
-            else if ( d < -.4 && parent.getLayer() < 3 ) {
+            else if ( d < 0 && parent.getLayer()< .3 ) {
                 BlockIfStatement newBlock = new BlockIfStatement(0);
                 parent.addChildren(newBlock);
                 newBlock.randomize();
                 generate(newBlock);
             }
             // adds a deceleration block to the code
-            else if ( d < -.3) {
+            else if ( d < .4) {
                 BlockDeceleration newBlock = new BlockDeceleration(0);
                 parent.addChildren(newBlock);
                 newBlock.randomize();
             }
             // adds a function call block to the code
-            else if ( d < 0 && parent.getVariables().size() > 0 ) {
+            else if ( d < .9 && parent.getVariables().size() > 0 ) {
                 // this function must be added to the children and then randomized
                 BlockFunctionCall newBlock = new BlockFunctionCall(0);
                 parent.addChildren(newBlock);
