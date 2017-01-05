@@ -3,6 +3,7 @@ package curtis.toaster.Blocks;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * Created by Badtoasters on 12/20/2016.
@@ -133,22 +134,27 @@ public abstract class Block {
      */
     public void trimDown() {
         HashMap<Variable,Integer> occurences = findOccurrence();
-        ArrayList<Block> children = getChildren();
 
-        for ( Block block : children ) {
+        Iterator<Block> iter = children.iterator();
+        ArrayList<Block> toRemove = new ArrayList<>();
+
+        while ( iter.hasNext() ) {
+            Block block = iter.next();
             if ( block instanceof BlockDeceleration ) {
                 BlockDeceleration blockDeceleration = (BlockDeceleration) block;
-                // finds occurences of that variable
+                // finds occurrences of that variable
                 int num = occurences.get( blockDeceleration.getVariableToCreate() );
                 if ( num <= 1 ) {
                     System.out.println("REMOVED" + block.toString());
-                    removeChild( block );
+                    toRemove.add(block);
                 }
             }
-            else if ( block instanceof  BlockForLoop || block instanceof BlockForLoop ) {
+            else if ( block instanceof  BlockIfStatement || block instanceof BlockForLoop ) {
                 block.trimDown();
             }
         }
+
+        children.removeAll(toRemove);
 
     }
 

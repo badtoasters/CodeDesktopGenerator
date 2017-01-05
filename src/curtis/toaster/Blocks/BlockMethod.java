@@ -32,8 +32,8 @@ public class BlockMethod extends Block {
         this.methodName = methodName;
     }
 
-    public BlockMethod(int layer) {
-        super(layer);
+    public BlockMethod() {
+        super(0);
     }
 
     public void calcReturnVar() {

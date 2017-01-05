@@ -12,6 +12,10 @@ public class BlockSetValue extends Block {
     private String operator = "";
     private String value = "";
 
+    public BlockSetValue() {
+        super(0);
+    }
+
     public Variable getVariable() {
         return variable;
     }

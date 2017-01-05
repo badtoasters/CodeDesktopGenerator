@@ -21,18 +21,18 @@ public class Main {
         NameGenerator.init();
 
         // initalizes the method
-        BlockMethod method = new BlockMethod(0);
+        BlockMethod method = new BlockMethod();
         method.setMethodName(NameGenerator.getRandomMethodName());
         method.randomize();
 
         // Populates block with children
         generate(method);
         method.calcReturnVar();
-
+        method.trimDown();
 
         // optional, can be removed
         System.out.println(method);
-        method.trimDown();
+
         // creates the background
         BufferedImage background = createBackground( method );
 
@@ -117,7 +117,7 @@ public class Main {
 
             // adds a for loop to the code
             if ( d < -.5 && parent.getLayer()< 2 ) {
-                BlockForLoop newBlock = new BlockForLoop(0);
+                BlockForLoop newBlock = new BlockForLoop();
                 parent.addChildren(newBlock);
                 newBlock.randomize();
                 //System.out.println(")"+newBlock.toString());
@@ -125,33 +125,33 @@ public class Main {
             }
             // adds an if block to the code
             else if ( d < .2 && parent.getLayer()< 2 ) {
-                BlockIfStatement newBlock = new BlockIfStatement(0);
+                BlockIfStatement newBlock = new BlockIfStatement();
                 parent.addChildren(newBlock);
                 newBlock.randomize();
                 //System.out.println(")"+newBlock.toString());
                 generate(newBlock);
             }
-            // adds a deceleration block to the code
-            else if ( d < .3) {
-                BlockDeceleration newBlock = new BlockDeceleration(0);
+            // adds a set value block to the code
+            else if ( d < .4) {
+                BlockSetValue newBlock = new BlockSetValue();
                 parent.addChildren(newBlock);
-                //System.out.println(")"+newBlock.toString());
                 newBlock.randomize();
+                //System.out.println(")"+newBlock.toString());
             }
             // adds a function call block to the code
-            else if ( d < .6 && parent.getVariables().size() > 0 ) {
+            else if ( d < 1.2 && parent.getVariables().size() > 0 ) {
                 // this function must be added to the children and then randomized
-                BlockFunctionCall newBlock = new BlockFunctionCall(0);
+                BlockFunctionCall newBlock = new BlockFunctionCall();
                 parent.addChildren(newBlock);
-                //System.out.println(")"+newBlock.toString());
                 newBlock.randomize();
+                //System.out.println(")"+newBlock.toString());
             }
-            // adds a set value block to the code
+            // adds a deceleration block to the code
             else {
-                BlockSetValue newBlock = new BlockSetValue(0);
+                BlockDeceleration newBlock = new BlockDeceleration();
                 parent.addChildren(newBlock);
-                //System.out.println(")"+newBlock.toString());
                 newBlock.randomize();
+                //System.out.println(")"+newBlock.toString());
             }
         }
     }

@@ -11,6 +11,10 @@ public class BlockDeceleration extends Block {
     private Variable variableToCreate;
     private String valueToSet = "null";
 
+    public BlockDeceleration() {
+        super(0);
+    }
+
     public Variable getVariableToCreate() {
         return variableToCreate;
     }

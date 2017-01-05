@@ -14,8 +14,8 @@ public class BlockFunctionCall extends Block {
     private boolean newVariable = false;
     private ArrayList<Variable> parameterVariables = new ArrayList<>();
 
-    public BlockFunctionCall(int layer) {
-        super(layer);
+    public BlockFunctionCall() {
+        super(0);
     }
 
     @Override
