@@ -10,8 +10,8 @@ public class BlockIfStatement extends Block {
     private String expectedValue;
     private Variable variable;
 
-    public BlockIfStatement(int layer) {
-        super(layer);
+    public BlockIfStatement() {
+        super(0);
     }
 
     public String getOperator() {

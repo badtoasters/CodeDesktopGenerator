@@ -12,8 +12,8 @@ public class BlockForLoop extends Block {
     private String operator;
     private String testValue;
 
-    public BlockForLoop(int layer) {
-        super(layer);
+    public BlockForLoop() {
+        super(0);
     }
 
     public Variable getLoopingVariable() {

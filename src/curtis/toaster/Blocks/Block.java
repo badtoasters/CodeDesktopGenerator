@@ -43,6 +43,10 @@ public abstract class Block {
         }
     }
 
+    private void removeChild(Block block) {
+        children.remove(block);
+    }
+
     public void setVariable(ArrayList<Variable> vars) {
         variables = vars;
     }
@@ -122,6 +126,30 @@ public abstract class Block {
         }
 
         return numOccurrence;
+    }
+
+    /**
+     * this trims off some of the useless blocks in the code block
+     */
+    public void trimDown() {
+        HashMap<Variable,Integer> occurences = findOccurrence();
+        ArrayList<Block> children = getChildren();
+
+        for ( Block block : children ) {
+            if ( block instanceof BlockDeceleration ) {
+                BlockDeceleration blockDeceleration = (BlockDeceleration) block;
+                // finds occurences of that variable
+                int num = occurences.get( blockDeceleration.getVariableToCreate() );
+                if ( num <= 1 ) {
+                    System.out.println("REMOVED" + block.toString());
+                    removeChild( block );
+                }
+            }
+            else if ( block instanceof  BlockForLoop || block instanceof BlockForLoop ) {
+                block.trimDown();
+            }
+        }
+
     }
 
     /**
