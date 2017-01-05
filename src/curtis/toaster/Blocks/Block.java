@@ -145,7 +145,6 @@ public abstract class Block {
                 // finds occurrences of that variable
                 int num = occurences.get( blockDeceleration.getVariableToCreate() );
                 if ( num <= 1 ) {
-                    System.out.println("REMOVED" + block.toString());
                     toRemove.add(block);
                 }
             }

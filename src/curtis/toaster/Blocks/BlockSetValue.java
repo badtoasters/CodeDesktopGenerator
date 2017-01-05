@@ -42,7 +42,8 @@ public class BlockSetValue extends Block {
         variable = getVariables().get(i);
 
         if ( getVariables().size() > 0 ) {
-            if ( gen.nextInt(10) > 7 ) {
+            if ( gen.nextInt(10) > 7 &&
+                    (variable.getType() == Type.Type_double || variable.getType() == Type.Type_int)) {
                 // randomly generate a constant
                 value = gen.nextInt(100) + "";
             }

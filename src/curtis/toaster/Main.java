@@ -42,14 +42,6 @@ public class Main {
         // changes the desktop's background
         WallpaperChanger.change(PATH);
 
-        for ( Variable var : method.findOccurrence().keySet().toArray(new Variable[0]) ) {
-            System.out.println(">"+var.getName() + " " + method.findOccurrence().get(var));
-        }
-
-        System.out.println();
-        for ( Variable var : method.getVariables() ) {
-            System.out.print(var.getName() + " ");
-        }
 
         // exits out of the code
         System.exit(0);
@@ -124,7 +116,7 @@ public class Main {
                 generate(newBlock);
             }
             // adds an if block to the code
-            else if ( d < .2 && parent.getLayer()< 2 ) {
+            else if ( d < .1 && parent.getLayer()< 2 ) {
                 BlockIfStatement newBlock = new BlockIfStatement();
                 parent.addChildren(newBlock);
                 newBlock.randomize();
@@ -132,14 +124,14 @@ public class Main {
                 generate(newBlock);
             }
             // adds a set value block to the code
-            else if ( d < .4) {
+            else if ( d < .3) {
                 BlockSetValue newBlock = new BlockSetValue();
                 parent.addChildren(newBlock);
                 newBlock.randomize();
                 //System.out.println(")"+newBlock.toString());
             }
             // adds a function call block to the code
-            else if ( d < 1.2 && parent.getVariables().size() > 0 ) {
+            else if ( d < .6 && parent.getVariables().size() > 0 ) {
                 // this function must be added to the children and then randomized
                 BlockFunctionCall newBlock = new BlockFunctionCall();
                 parent.addChildren(newBlock);
@@ -149,8 +141,10 @@ public class Main {
             // adds a deceleration block to the code
             else {
                 BlockDeceleration newBlock = new BlockDeceleration();
-                parent.addChildren(newBlock);
+                // must randomize before adding to parent
                 newBlock.randomize();
+                parent.addChildren(newBlock);
+
                 //System.out.println(")"+newBlock.toString());
             }
         }
