@@ -58,12 +58,7 @@ public class BlockDeceleration extends Block {
     public String toString() {
         String line = "";
 
-        String tab = "";
-        for ( int t = 0 ; t < getLayer() ; t ++ ) {
-            tab += "\t";
-        }
-
-        line = tab + getVariableToCreate().getType() + " " + getVariableToCreate().getName() + " = " + getValueToSet();
+        line += tab() + getVariableToCreate().getType() + " " + getVariableToCreate().getName() + " = " + getValueToSet();
 
         return line;
     }

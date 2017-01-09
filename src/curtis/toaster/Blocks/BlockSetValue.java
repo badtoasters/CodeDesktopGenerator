@@ -92,16 +92,16 @@ public class BlockSetValue extends Block {
     public String toString() {
         String line = "";
         if ( variable.getType().equals(Type.Type_object)) {
-            line = tab() + variable.getName() + " = " + NameGenerator.getRandomMethodName()+ "(" + value + ");";
+            line += tab() + variable.getName() + " = " + NameGenerator.getRandomMethodName()+ "(" + value + ");";
         }
         else if ( variable.getType().equals(Type.Type_string)) {
-            line = tab() + variable.getName() + " = " + variable.getName() + " + \"" + value + "\"";
+            line += tab() + variable.getName() + " = " + variable.getName() + " + \"" + value + "\"";
         }
         else if ( variable.getType().equals(Type.Type_boolean)) {
-            line = tab() + variable.getName() + " = " + value;
+            line += tab() + variable.getName() + " = " + value;
         }
         else {
-            line = tab() + variable.getName() + " " + operator + " " + value + ";";
+            line += tab() + variable.getName() + " " + operator + " " + value + ";";
         }
 
         return line;
