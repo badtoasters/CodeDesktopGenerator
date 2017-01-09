@@ -149,7 +149,13 @@ public abstract class Block {
                 }
             }
             else if ( block instanceof  BlockIfStatement || block instanceof BlockForLoop ) {
+                // recursive trim of all sub blocks
                 block.trimDown();
+                // removes any sub blocks that have no children after trim
+                if ( block.getChildren().size() == 0 ) {
+                    this.children.remove(block);
+                }
+
             }
         }
 
