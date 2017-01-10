@@ -88,7 +88,7 @@ public class BlockIfStatement extends Block {
             }
             else {
                 compare = new Variable(Type.Type_string,NameGenerator.getRandomVariableName(),"");
-                line += tab() + "if( " + variable + ".equals(\"" + compare.getName() + "\" ) ) { \n";
+                line += tab() + "if( " + variable + ".equals(\"" + compare.getName() + "\") ) { \n";
             }
         }
         else {

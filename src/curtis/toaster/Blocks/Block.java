@@ -133,7 +133,7 @@ public abstract class Block {
      * this trims off some of the useless blocks in the code block
      */
     public void trimDown() {
-        HashMap<Variable,Integer> occurences = findOccurrence();
+        HashMap<Variable,Integer> occurrences = findOccurrence();
 
         Iterator<Block> iter = children.iterator();
         ArrayList<Block> toRemove = new ArrayList<>();
@@ -143,7 +143,7 @@ public abstract class Block {
             if ( block instanceof BlockDeceleration ) {
                 BlockDeceleration blockDeceleration = (BlockDeceleration) block;
                 // finds occurrences of that variable
-                int num = occurences.get( blockDeceleration.getVariableToCreate() );
+                int num = occurrences.get( blockDeceleration.getVariableToCreate() );
                 if ( num <= 1 ) {
                     toRemove.add(block);
                 }
