@@ -116,7 +116,7 @@ public class Main {
                 generate(newBlock);
             }
             // adds an if block to the code
-            else if ( d < .1 && parent.getLayer()< 2 ) {
+            else if ( d < -.1 && parent.getLayer()< 2 ) {
                 BlockIfStatement newBlock = new BlockIfStatement();
                 parent.addChildren(newBlock);
                 newBlock.randomize();
@@ -125,14 +125,14 @@ public class Main {
             }
             // adds a set value block to the code
             // will not use if parent is a for loop
-            else if ( d < .3 && !(parent instanceof BlockForLoop)) {
+            else if ( d < .2 && !(parent instanceof BlockForLoop)) {
                 BlockSetValue newBlock = new BlockSetValue();
                 parent.addChildren(newBlock);
                 newBlock.randomize();
                 //System.out.println(")"+newBlock.toString());
             }
             // adds a function call block to the code
-            else if ( d < .6 && parent.getVariables().size() > 0 ) {
+            else if ( d < .4 && parent.getVariables().size() > 0 ) {
                 // this function must be added to the children and then randomized
                 BlockFunctionCall newBlock = new BlockFunctionCall();
                 parent.addChildren(newBlock);

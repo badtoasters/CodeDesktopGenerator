@@ -148,6 +148,13 @@ public abstract class Block {
                     toRemove.add(block);
                 }
             }
+            else if ( block instanceof BlockSetValue ) {
+                BlockSetValue blockSetValue = (BlockSetValue) block;
+                int num = occurrences.get( blockSetValue.getVariable() );
+                occurrences.put(blockSetValue.getVariable(), num+1);
+                // shouldn't be in toRemove
+                toRemove.remove(blockSetValue);
+            }
             else if ( block instanceof  BlockIfStatement || block instanceof BlockForLoop ) {
                 // recursive trim of all sub blocks
                 block.trimDown();
