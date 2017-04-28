@@ -124,7 +124,8 @@ public class Main {
                 generate(newBlock);
             }
             // adds a set value block to the code
-            else if ( d < .3) {
+            // will not use if parent is a for loop
+            else if ( d < .3 && !(parent instanceof BlockForLoop)) {
                 BlockSetValue newBlock = new BlockSetValue();
                 parent.addChildren(newBlock);
                 newBlock.randomize();

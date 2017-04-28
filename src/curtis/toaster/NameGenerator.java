@@ -37,6 +37,9 @@ public class NameGenerator {
         methodNames.put("coolBackground",false);
         methodNames.put("flush",false);
         methodNames.put("randomize",false);
+        methodNames.put("heapifyDown",false);
+        methodNames.put("push",false);
+        methodNames.put("empty",false);
 
         // generate variable names
         variableNames = new HashMap<>();
@@ -71,6 +74,7 @@ public class NameGenerator {
         variableNames.put("cosx",false);
         variableNames.put("cosy",false);
         variableNames.put("startTime",false);
+        variableNames.put("currentIdx",false);
 
         // generate object names
         objectNames.put("Apple",false);
@@ -85,6 +89,10 @@ public class NameGenerator {
         objectNames.put("GradientMaker",false);
         objectNames.put("Color",false);
         objectNames.put("flush",false);
+        objectNames.put("PNG",false);
+        objectNames.put("RBGAPixel",false);
+        objectNames.put("AstarGraph",false);
+        objectNames.put("KDTree",false);
     }
 
     public static String getRandomMethodName() {

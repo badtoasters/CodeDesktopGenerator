@@ -61,7 +61,7 @@ public class BlockSetValue extends Block {
                     }
                 }
                 else if ( variable.getType() == Type.Type_boolean ) {
-                    value = gen.nextBoolean() ? "true":"false";
+                    value = gen.nextBoolean() ? "true":"false" + ";";
                 }
                 else {
                     // if the variable was of a bad type
