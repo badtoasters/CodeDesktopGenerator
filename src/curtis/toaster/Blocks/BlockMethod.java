@@ -74,9 +74,9 @@ public class BlockMethod extends Block {
 
         String line = tab + "public " + returnVar.getType() + " " + methodName + "(";
         for (int var = 0; var < parameterVariables.size() ; var ++ ) {
-            line += " " + parameterVariables.get(var).getType() +
+            line += (var>0?" ":"") + parameterVariables.get(var).getType() +
                     " " + parameterVariables.get(var).getName() +
-                    (var == parameterVariables.size() - 1 ? " ":" ,");
+                    (var == parameterVariables.size() - 1 ? "":",");
         }
         line += ") {\n";
 
