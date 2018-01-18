@@ -84,10 +84,10 @@ public class BlockForLoop extends Block {
             tab += "\t";
         }
 
-        String line = tab + "for( " + loopingVariable.getType()+ " " +
+        String line = tab + "for (" + loopingVariable.getType()+ " " +
                 loopingVariable.getName() + " = " + 0 + "; " +
                 loopingVariable.getName() + operator + testValue + "; " +
-                loopingVariable.getName() + "++ ) {" + "\n";
+                loopingVariable.getName() + "++) {" + "\n";
 
         // prints children
         if ( getChildren().size() > 0 ) {

@@ -67,8 +67,8 @@ public class BlockFunctionCall extends Block {
         String end = tab() + beginning + function + "(";
 
         for (int var = 0; var < parameterVariables.size() ; var ++ ) {
-            end += " " + parameterVariables.get(var).getName() +
-                    (var == parameterVariables.size() - 1 ? " ":" ,");
+            end += (var > 0?" ":"") + parameterVariables.get(var).getName() +
+                    (var == parameterVariables.size() - 1 ? "":" ,");
         }
         end += ");";
         return end;

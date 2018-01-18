@@ -95,10 +95,10 @@ public class BlockSetValue extends Block {
             line += tab() + variable.getName() + " = " + NameGenerator.getRandomMethodName()+ "(" + value + ");";
         }
         else if ( variable.getType().equals(Type.Type_string)) {
-            line += tab() + variable.getName() + " = " + variable.getName() + " + \"" + value + "\"";
+            line += tab() + variable.getName() + " = " + variable.getName() + " + \"" + value + "\";";
         }
         else if ( variable.getType().equals(Type.Type_boolean)) {
-            line += tab() + variable.getName() + " = " + value;
+            line += tab() + variable.getName() + " = " + value + ";";
         }
         else {
             line += tab() + variable.getName() + " " + operator + " " + value + ";";

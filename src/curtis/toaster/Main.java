@@ -103,51 +103,40 @@ public class Main {
     public static void generate(Block parent) {
         Random gen = new Random();
         // function that controls the number of blocks at each layer
-        int number = gen.nextInt(5/(parent.getLayer()+1) )+3;
+        int number = gen.nextInt(5/(parent.getLayer()+1))+3;
         for ( int i = 0 ; i < number ; i++ ) {
             double d = gen.nextGaussian();
-
+			Block newBlock;
+			boolean generate = false;
             // adds a for loop to the code
             if ( d < -.5 && parent.getLayer()< 2 ) {
-                BlockForLoop newBlock = new BlockForLoop();
-                parent.addChildren(newBlock);
-                newBlock.randomize();
-                //System.out.println(")"+newBlock.toString());
-                generate(newBlock);
+                newBlock = new BlockForLoop();
+				generate = true;
             }
             // adds an if block to the code
             else if ( d < -.1 && parent.getLayer()< 2 ) {
-                BlockIfStatement newBlock = new BlockIfStatement();
-                parent.addChildren(newBlock);
-                newBlock.randomize();
-                //System.out.println(")"+newBlock.toString());
-                generate(newBlock);
+                newBlock = new BlockIfStatement();
+                generate = true;
             }
             // adds a set value block to the code
             // will not use if parent is a for loop
             else if ( d < .2 && !(parent instanceof BlockForLoop)) {
-                BlockSetValue newBlock = new BlockSetValue();
-                parent.addChildren(newBlock);
-                newBlock.randomize();
-                //System.out.println(")"+newBlock.toString());
+            	newBlock = new BlockSetValue();
             }
             // adds a function call block to the code
             else if ( d < .4 && parent.getVariables().size() > 0 ) {
-                // this function must be added to the children and then randomized
-                BlockFunctionCall newBlock = new BlockFunctionCall();
-                parent.addChildren(newBlock);
-                newBlock.randomize();
-                //System.out.println(")"+newBlock.toString());
+				// this function must be added to the children and then randomized
+				newBlock = new BlockFunctionCall();
+			} else {
+                newBlock = new BlockDeceleration();
             }
-            // adds a deceleration block to the code
-            else {
-                BlockDeceleration newBlock = new BlockDeceleration();
-                // must randomize before adding to parent
-                newBlock.randomize();
-                parent.addChildren(newBlock);
 
-                //System.out.println(")"+newBlock.toString());
-            }
+			parent.addChildren(newBlock);
+			newBlock.randomize();
+			//System.out.println(")"+newBlock.toString());
+			if (generate) {
+				generate(newBlock);
+			}
         }
     }
 

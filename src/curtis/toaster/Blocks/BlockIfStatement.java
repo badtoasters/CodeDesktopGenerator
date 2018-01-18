@@ -74,25 +74,25 @@ public class BlockIfStatement extends Block {
     public String toString() {
         String line = "";
         if ( variable.getType() == Type.Type_boolean ) {
-            line = tab() + "if(" +operator+ variable + ") { \n";
+            line = tab() + "if (" +operator+ variable + ") { \n";
         }
         else if ( variable.getType() == Type.Type_string ) {
             Random gen = new Random();
             int i = gen.nextInt(getVariables().size());
             Variable compare = getVariables().get(i);
             if ( compare.getType() == Type.Type_string ) {
-                line += tab() + "if( " + compare + ".equals(" + variable + ") ) { \n";
+                line += tab() + "if ( " + compare + ".equals(" + variable + ") ) { \n";
             }
             else if ( compare.getType() == Type.Type_object ) {
-                line += tab() + "if( " + variable + ".equals(" + compare + ".toString() ) ) { \n";
+                line += tab() + "if ( " + variable + ".equals(" + compare + ".toString() ) ) { \n";
             }
             else {
                 compare = new Variable(Type.Type_string,NameGenerator.getRandomVariableName(),"");
-                line += tab() + "if( " + variable + ".equals(\"" + compare.getName() + "\") ) { \n";
+                line += tab() + "if ( " + variable + ".equals(\"" + compare.getName() + "\") ) { \n";
             }
         }
         else {
-            line = tab() + "if(" + variable + " " + operator + " " + expectedValue + ") { \n";
+            line = tab() + "if (" + variable + " " + operator + " " + expectedValue + ") { \n";
         }
 
         // prints children
