@@ -160,7 +160,7 @@ public abstract class Block {
                 block.trimDown();
                 // removes any sub blocks that have no children after trim
                 if ( block.getChildren().size() == 0 ) {
-                    this.children.remove(block);
+                	toRemove.add(block);
                 }
 
             }

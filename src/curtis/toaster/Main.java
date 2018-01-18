@@ -171,8 +171,8 @@ public class Main {
         Graphics2D g = image.createGraphics();
         GradientPaint paint = new GradientPaint(0.0f, 0.0f,
                 new Color(000000),
-                image.getWidth()*2 * (.10f + 1.7f*gen.nextFloat()),
-                image.getHeight()*6 * (.10f + 1.7f*gen.nextFloat()),
+                image.getWidth()*2 * (.10f + 1f*gen.nextFloat()),
+                image.getHeight()*6 * (.10f + 1f*gen.nextFloat()),
                 col);
         g.setPaint(paint);
         g.fill(new Rectangle2D.Double(0, 0, image.getWidth(), image.getHeight()));
