@@ -40,8 +40,22 @@ public class NameGenerator {
         methodNames.put("heapifyDown",false);
         methodNames.put("push",false);
         methodNames.put("empty",false);
+		methodNames.put("transferToFile",false);
+		methodNames.put("parseArgs",false);
+		methodNames.put("connectToServer",false);
+		methodNames.put("verbToString",false);
+		methodNames.put("createMessage",false);
+		methodNames.put("writeFile", false);
+		methodNames.put("readHeader",false);
+		methodNames.put("malloc",false);
+		methodNames.put("printStats", false);
+		methodNames.put("loadHistory", false);
+		methodNames.put("saveHistory",false);
+		methodNames.put("startsWith",false);
+		methodNames.put("shell", false);
+		methodNames.put("vectorDestroy", false);
 
-        // generate variable names
+		// generate variable names
         variableNames = new HashMap<>();
         variableNames.put("x",false);
         variableNames.put("y",false);
@@ -75,6 +89,10 @@ public class NameGenerator {
         variableNames.put("cosy",false);
         variableNames.put("startTime",false);
         variableNames.put("currentIdx",false);
+		variableNames.put("quit ",false);
+		variableNames.put("pageDir",false);
+		variableNames.put("pdEntry",false);
+		variableNames.put("optval",false);
 
         // generate object names
         objectNames.put("Apple",false);
