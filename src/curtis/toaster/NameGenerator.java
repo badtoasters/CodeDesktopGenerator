@@ -54,6 +54,10 @@ public class NameGenerator {
 		methodNames.put("startsWith",false);
 		methodNames.put("shell", false);
 		methodNames.put("vectorDestroy", false);
+		methodNames.put("queryZomato", false);
+		methodNames.put("bindUser", false);
+		methodNames.put("enableInvite", false);
+		methodNames.put("getOpponent", false);
 
 		// generate variable names
         variableNames = new HashMap<>();
